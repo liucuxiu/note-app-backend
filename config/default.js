@@ -1,7 +1,7 @@
 module.exports = {
   auth: {
     secret: process.env.AUTH_REDIS_SECRET || 'liucuxiu',
-    tokenExpiryTime: 3000,
+    tokenExpiryTime: 300000,
     redisConnectionString: process.env.AUTH_REDIS_CONNECTION || 'redis://redis:6379'
   },
   mongo: {
