@@ -18,7 +18,7 @@ interface INoteSerialize {
 }
 
 export class Note {
-  private id: string;
+  private readonly id: string;
 
   private props: INoteProperties;
 

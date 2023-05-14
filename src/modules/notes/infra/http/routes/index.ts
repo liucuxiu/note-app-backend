@@ -3,25 +3,31 @@ import { createNoteController } from '../../../useCases/createNote';
 import { validateSchema } from '../../../../../shared/infra/http/middlewares/validateRequestBody.middleware';
 import { createNoteSchema } from '../schemas/createNote.joi';
 import { isAuthenticated } from '../../../../../shared/infra/http/middlewares/authenticate.middleware';
+import { getNoteListController } from '../../../useCases/getNoteList';
+import { getNoteByIdController } from '../../../useCases/getNoteById';
+import { deleteNoteController } from '../../../useCases/deleteNote';
+import { editNoteController } from '../../../useCases/editNote';
 
 export const noteRouter = express.Router();
 
-noteRouter.get('/', (req, res) => {
-  res.send('Hello from note router');
-});
+noteRouter.get('/',
+  isAuthenticated(),
+  (req, res) => getNoteListController.execute(req, res));
 
 noteRouter.post('/',
   isAuthenticated(),
-  validateSchema(createNoteSchema), (req: any, res: any) => createNoteController.execute(req, res));
+  validateSchema(createNoteSchema),
+  (req: any, res: any) => createNoteController.execute(req, res));
 
-noteRouter.put('/', (req, res) => {
-  res.send('Hello from note router');
-});
+noteRouter.patch('/:id',
+  isAuthenticated(),
+  (req: any, res: any) => editNoteController.execute(req, res));
 
-noteRouter.delete('/', (req, res) => {
-  res.send('Hello from note router');
-});
+noteRouter.delete('/:id',
+  isAuthenticated(),
+  (req: any, res: any) => deleteNoteController.execute(req, res));
 
-noteRouter.get('/:id', (req, res) => {
-  res.send('Hello from note router');
-});
+noteRouter.get('/:id',
+  isAuthenticated(),
+  (req, res) => getNoteByIdController.execute(req, res)
+);

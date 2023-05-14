@@ -13,7 +13,7 @@ export class NoteMapper {
     };
   }
 
-  public static toDomain(raw: any) {
+  public static toDomain(raw: any): Note {
     return Note.create({
       userId: raw.userId,
       title: raw.title,

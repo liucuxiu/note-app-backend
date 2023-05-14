@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const noteSchema = new mongoose.Schema({
   _id: {
     type: String,
+    required: true,
   },
   userId: {
     type: String,
@@ -14,6 +15,10 @@ const noteSchema = new mongoose.Schema({
   },
   content: {
     type: String,
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false
   }
 },  { timestamps: true })
 
