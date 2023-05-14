@@ -1,4 +1,5 @@
 import { Note } from '../domain/Note';
+import { EditNoteDTO } from '../useCases/editNote/EditNoteDTO';
 
 export interface INoteRepo {
   findNoteById(userId: string, noteId: string): Promise<any>;
@@ -9,4 +10,5 @@ export interface INoteRepo {
 
   delete(userId: string, noteId: string): Promise<any>;
 
+  update(note: EditNoteDTO): Promise<any>;
 }
