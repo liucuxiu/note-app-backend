@@ -1,0 +1,245 @@
+openapi: 3.0.0
+info:
+  title: note app
+  contact: {}
+  version: '1.0'
+servers:
+  - url: http://localhost:3000
+    variables: {}
+paths:
+  /user/signup:
+    post:
+      tags:
+        - User
+      summary: signup
+      operationId: signup
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/signupRequest'
+                - example:
+                    username: liucuxiu1
+                    email: liucuxiu1@gmail.com
+                    password: '123455678'
+            example:
+              username: liucuxiu1
+              email: liucuxiu1@gmail.com
+              password: '123455678'
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '98'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"62-vsKBYUvZTEf14VR1PRU+LoHeS2A"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Sat, 04 Mar 2023 03:29:39 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/signup'
+                  - example:
+                      id: a52ee470-6a1a-4600-b72f-b1afa35421d4
+                      username: liucuxiu1
+                      email: liucuxiu1@gmail.com
+              example:
+                id: a52ee470-6a1a-4600-b72f-b1afa35421d4
+                username: liucuxiu1
+                email: liucuxiu1@gmail.com
+      deprecated: false
+  /user/login:
+    post:
+      tags:
+        - User
+      summary: login
+      operationId: login
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/loginRequest'
+                - example:
+                    username: liucuxiu1
+                    password: '123455678'
+            example:
+              username: liucuxiu1
+              password: '123455678'
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '587'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"24b-KPBso0eGvLp9H4NR40gnHe8tRAI"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Sat, 04 Mar 2023 03:29:55 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/login'
+                  - example:
+                      accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImE1MmVlNDcwLTZhMWEtNDYwMC1iNzJmLWIxYWZhMzU0MjFkNCIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY3NzkwMDU5NSwiZXhwIjoxNjc3OTMwNTk1fQ.j0WUe-yVVi8Z-MXMZHUkvKiAqzP6nOTNtvUR7ynyxFA
+                      refreshToken: Z8px7I0mNCM7OhlWN2RQcemq8nJky5MRNZI3YV9M9BG3ibaX1TUVqu15I8CVSF8VsvImCvjKWog10NkOmkgm1SqahY4Jg5lwULFXDYIWJkROULh3TeeTrqC3JniRiMNOdFtZKe8ZM6UT5OR9Qi8C8SPYMwLQsSE5VvI0xlXTj4ShvOfc0btLXSGAJRcpnopWOtAiSh6nGJ5uor68oHnbqrXc1bg1qMKT8XDbXsqfZjhRmgzziTPHzxXl03FEJljo
+              example:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImE1MmVlNDcwLTZhMWEtNDYwMC1iNzJmLWIxYWZhMzU0MjFkNCIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY3NzkwMDU5NSwiZXhwIjoxNjc3OTMwNTk1fQ.j0WUe-yVVi8Z-MXMZHUkvKiAqzP6nOTNtvUR7ynyxFA
+                refreshToken: Z8px7I0mNCM7OhlWN2RQcemq8nJky5MRNZI3YV9M9BG3ibaX1TUVqu15I8CVSF8VsvImCvjKWog10NkOmkgm1SqahY4Jg5lwULFXDYIWJkROULh3TeeTrqC3JniRiMNOdFtZKe8ZM6UT5OR9Qi8C8SPYMwLQsSE5VvI0xlXTj4ShvOfc0btLXSGAJRcpnopWOtAiSh6nGJ5uor68oHnbqrXc1bg1qMKT8XDbXsqfZjhRmgzziTPHzxXl03FEJljo
+      deprecated: false
+
+components:
+  securitySchemes:
+    jwt:
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    signupRequest:
+      title: signupRequest
+      required:
+        - username
+        - email
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        username: liucuxiu1
+        email: liucuxiu1@gmail.com
+        password: '123455678'
+    signup:
+      title: signup
+      required:
+        - id
+        - username
+        - email
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+      example:
+        id: a52ee470-6a1a-4600-b72f-b1afa35421d4
+        username: liucuxiu1
+        email: liucuxiu1@gmail.com
+    loginRequest:
+      title: loginRequest
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        username: liucuxiu1
+        password: '123455678'
+    login:
+      title: login
+      required:
+        - accessToken
+        - refreshToken
+      type: object
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+      example:
+        accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImE1MmVlNDcwLTZhMWEtNDYwMC1iNzJmLWIxYWZhMzU0MjFkNCIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY3NzkwMDU5NSwiZXhwIjoxNjc3OTMwNTk1fQ.j0WUe-yVVi8Z-MXMZHUkvKiAqzP6nOTNtvUR7ynyxFA
+        refreshToken: Z8px7I0mNCM7OhlWN2RQcemq8nJky5MRNZI3YV9M9BG3ibaX1TUVqu15I8CVSF8VsvImCvjKWog10NkOmkgm1SqahY4Jg5lwULFXDYIWJkROULh3TeeTrqC3JniRiMNOdFtZKe8ZM6UT5OR9Qi8C8SPYMwLQsSE5VvI0xlXTj4ShvOfc0btLXSGAJRcpnopWOtAiSh6nGJ5uor68oHnbqrXc1bg1qMKT8XDbXsqfZjhRmgzziTPHzxXl03FEJljo
+tags:
+  - name: User
+    description: 'User'
+
