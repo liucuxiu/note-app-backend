@@ -1,7 +1,7 @@
 import { Note } from '../domain/Note';
 
 export interface INoteRepo {
-  findNoteById(noteId: string): Promise<any>;
+  findNoteById(userId: string, noteId: string): Promise<any>;
 
   findNotesByUserId(userId: string): Promise<any>;
 

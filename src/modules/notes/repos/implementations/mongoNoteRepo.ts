@@ -3,12 +3,23 @@ import { NoteMapper } from '../../mappers/noteMapper';
 import { NoteModel } from '../../../../shared/infra/database/mongo/models/Note';
 
 export class MongoNoteRepo implements INoteRepo {
-  async findNoteById(noteId: string): Promise<any> {
+  async findNoteById(userId: string, noteId: string): Promise<any> {
+    const note = await NoteModel.findById({
+      _id: noteId,
+      userId
+    });
+    if (note) {
+      return NoteMapper.toDomain(note);
+    }
     return null;
   }
 
   async findNotesByUserId(userId: string): Promise<any> {
-    return null;
+    //todo: query limit offset
+    const listNotes = await NoteModel.find({
+      userId
+    }).sort([['createdAt', -1]]);
+    return listNotes.map(note => NoteMapper.toDomain(note));
   }
 
   async save(note: any): Promise<any> {
