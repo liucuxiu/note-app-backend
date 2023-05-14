@@ -7,6 +7,6 @@ export interface INoteRepo {
 
   save(note: Note): Promise<Note>;
 
-  delete(noteId: string): Promise<any>;
+  delete(userId: string, noteId: string): Promise<any>;
 
 }

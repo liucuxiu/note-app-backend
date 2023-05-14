@@ -8,10 +8,8 @@ export class MongoNoteRepo implements INoteRepo {
       _id: noteId,
       userId
     });
-    if (note) {
-      return NoteMapper.toDomain(note);
-    }
-    return null;
+
+    return note ? NoteMapper.toDomain(note) : null;
   }
 
   async findNotesByUserId(userId: string): Promise<any> {
@@ -28,8 +26,13 @@ export class MongoNoteRepo implements INoteRepo {
     return NoteMapper.toDomain(saveResult);
   }
 
-  async delete(noteId: string): Promise<any> {
-    return null;
+  async delete(userId: string, noteId: string): Promise<any> {
+    const deletedNote = await NoteModel.findByIdAndUpdate(
+      noteId,
+      { isDeleted: true },
+      { new: true }
+    );
+    return deletedNote ? NoteMapper.toDomain(deletedNote) : null;
   }
 
 }
