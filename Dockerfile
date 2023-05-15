@@ -18,8 +18,8 @@ COPY . /usr/src/note-app
 ENV MONGO_URI mongodb://mongo:27017/note-app
 ENV REDIS_URI redis://redis:6379
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 8000
+EXPOSE 8000
 
 # Start the Node.js app
 CMD ["npm", "start"]

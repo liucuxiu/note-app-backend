@@ -8,6 +8,6 @@ module.exports = {
     uri: process.env.MONGO_CONNECTION || 'mongodb://mongo:27017/note-app'
   },
   app: {
-    port: process.env.APP_PORT || 3000
+    port: process.env.APP_PORT || 8000
   }
 };
