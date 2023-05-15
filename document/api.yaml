@@ -168,6 +168,504 @@ paths:
                 refreshToken: Z8px7I0mNCM7OhlWN2RQcemq8nJky5MRNZI3YV9M9BG3ibaX1TUVqu15I8CVSF8VsvImCvjKWog10NkOmkgm1SqahY4Jg5lwULFXDYIWJkROULh3TeeTrqC3JniRiMNOdFtZKe8ZM6UT5OR9Qi8C8SPYMwLQsSE5VvI0xlXTj4ShvOfc0btLXSGAJRcpnopWOtAiSh6nGJ5uor68oHnbqrXc1bg1qMKT8XDbXsqfZjhRmgzziTPHzxXl03FEJljo
       deprecated: false
 
+  /notes:
+    get:
+      tags:
+        - Note
+      summary: get list notes
+      operationId: getlistnotes
+      parameters:
+        - name: skip
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - name: limit
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            example: 2
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImY4Yzk4ZWJkLTA1NzQtNDJmMS05Y2E0LWYzMjAzNDc1YzgxYiIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NDA3OTc1MiwiZXhwIjoxNjg0Mzc5NzUyfQ.RPXB8FBxKSUtTuIop-FSDqLR0mBNVWjVtG4I2OhhQr0
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '453'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"1c5-IaWknNAia34yv/zNJlKzbTzyEfw"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Sun, 14 May 2023 15:58:34 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/getlistnote'
+                description: ''
+                example:
+                  - id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+                    userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                    title: Today is Monday
+                    content: I am very tired
+                    createdAt: 2023-05-14T15:58:29.844Z
+                    updatedAt: 2023-05-14T15:58:29.844Z
+                  - id: 27d66e2d-89d7-4680-a768-a128e22df3af
+                    userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                    title: Today is Friday
+                    content: I am very tired
+                    createdAt: 2023-05-14T15:58:00.655Z
+                    updatedAt: 2023-05-14T15:58:00.655Z
+              example:
+                - id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+                  userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                  title: Today is Monday
+                  content: I am very tired
+                  createdAt: 2023-05-14T15:58:29.844Z
+                  updatedAt: 2023-05-14T15:58:29.844Z
+                - id: 27d66e2d-89d7-4680-a768-a128e22df3af
+                  userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                  title: Today is Friday
+                  content: I am very tired
+                  createdAt: 2023-05-14T15:58:00.655Z
+                  updatedAt: 2023-05-14T15:58:00.655Z
+      deprecated: false
+      security:
+        - jwt: []
+    post:
+      tags:
+        - Note
+      summary: create note
+      operationId: createnote
+      parameters:
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImY4Yzk4ZWJkLTA1NzQtNDJmMS05Y2E0LWYzMjAzNDc1YzgxYiIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NDA3OTc1MiwiZXhwIjoxNjg0Mzc5NzUyfQ.RPXB8FBxKSUtTuIop-FSDqLR0mBNVWjVtG4I2OhhQr0
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/createnoterequest'
+                - example:
+                    title: Today is Monday
+                    content: I am very happy
+            example:
+              title: Today is Monday
+              content: I am very happy
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '225'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"e1-Hshha5azSjg96uYbqqXGfvujp4g"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 15 May 2023 10:46:42 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/createnote'
+                  - example:
+                      id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+                      userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                      title: Today is Monday
+                      content: I am very happy
+                      createdAt: 2023-05-15T10:46:42.529Z
+                      updatedAt: 2023-05-15T10:46:42.529Z
+              example:
+                id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+                userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                title: Today is Monday
+                content: I am very happy
+                createdAt: 2023-05-15T10:46:42.529Z
+                updatedAt: 2023-05-15T10:46:42.529Z
+      deprecated: false
+      security:
+        - jwt: []
+  /notes/{id}:
+    get:
+      tags:
+        - Note
+      summary: get note by ID
+      operationId: getnotebyID
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImY4Yzk4ZWJkLTA1NzQtNDJmMS05Y2E0LWYzMjAzNDc1YzgxYiIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NDA3OTc1MiwiZXhwIjoxNjg0Mzc5NzUyfQ.RPXB8FBxKSUtTuIop-FSDqLR0mBNVWjVtG4I2OhhQr0
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '225'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"e1-wF8wallZSO1U2MpzFOtp7ZTttzg"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Sun, 14 May 2023 15:59:46 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/getnotebyID'
+                  - example:
+                      id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+                      userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                      title: Today is Monday
+                      content: I am very tired
+                      createdAt: 2023-05-14T15:58:29.844Z
+                      updatedAt: 2023-05-14T15:58:29.844Z
+              example:
+                id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+                userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                title: Today is Monday
+                content: I am very tired
+                createdAt: 2023-05-14T15:58:29.844Z
+                updatedAt: 2023-05-14T15:58:29.844Z
+      deprecated: false
+      security:
+        - jwt: []
+    patch:
+      tags:
+        - Note
+      summary: update note
+      operationId: updatenote
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImY4Yzk4ZWJkLTA1NzQtNDJmMS05Y2E0LWYzMjAzNDc1YzgxYiIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NDA3OTc1MiwiZXhwIjoxNjg0Mzc5NzUyfQ.RPXB8FBxKSUtTuIop-FSDqLR0mBNVWjVtG4I2OhhQr0
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/updatenoterequest'
+                - example:
+                    title: Today is Tues
+                    content: I am hungry
+            example:
+              title: Today is Tues
+              content: I am hungry
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '219'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"db-+vO4FRNi0/Rwk4boqrHaVy0YSsc"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 15 May 2023 10:47:51 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/updatenote'
+                  - example:
+                      id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+                      userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                      title: Today is Tues
+                      content: I am hungry
+                      createdAt: 2023-05-15T10:46:42.529Z
+                      updatedAt: 2023-05-15T10:47:51.661Z
+              example:
+                id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+                userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                title: Today is Tues
+                content: I am hungry
+                createdAt: 2023-05-15T10:46:42.529Z
+                updatedAt: 2023-05-15T10:47:51.661Z
+      deprecated: false
+      security:
+        - jwt: []
+    delete:
+      tags:
+        - Note
+      summary: delete note
+      operationId: deletenote
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImY4Yzk4ZWJkLTA1NzQtNDJmMS05Y2E0LWYzMjAzNDc1YzgxYiIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NDA3OTc1MiwiZXhwIjoxNjg0Mzc5NzUyfQ.RPXB8FBxKSUtTuIop-FSDqLR0mBNVWjVtG4I2OhhQr0
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '225'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"e1-ba4RyfGgdF5Re7uAMuqwQTbpC+c"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Sun, 14 May 2023 16:04:01 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/deletenote'
+                  - example:
+                      id: 27d66e2d-89d7-4680-a768-a128e22df3af
+                      userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                      title: Today is Friday
+                      content: I am very tired
+                      createdAt: 2023-05-14T15:58:00.655Z
+                      updatedAt: 2023-05-14T16:04:01.361Z
+              example:
+                id: 27d66e2d-89d7-4680-a768-a128e22df3af
+                userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+                title: Today is Friday
+                content: I am very tired
+                createdAt: 2023-05-14T15:58:00.655Z
+                updatedAt: 2023-05-14T16:04:01.361Z
+      deprecated: false
+      security:
+        - jwt: []
 components:
   securitySchemes:
     jwt:
@@ -239,7 +737,188 @@ components:
       example:
         accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdWN1eGl1MUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxpdWN1eGl1MSIsInVzZXJJZCI6ImE1MmVlNDcwLTZhMWEtNDYwMC1iNzJmLWIxYWZhMzU0MjFkNCIsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY3NzkwMDU5NSwiZXhwIjoxNjc3OTMwNTk1fQ.j0WUe-yVVi8Z-MXMZHUkvKiAqzP6nOTNtvUR7ynyxFA
         refreshToken: Z8px7I0mNCM7OhlWN2RQcemq8nJky5MRNZI3YV9M9BG3ibaX1TUVqu15I8CVSF8VsvImCvjKWog10NkOmkgm1SqahY4Jg5lwULFXDYIWJkROULh3TeeTrqC3JniRiMNOdFtZKe8ZM6UT5OR9Qi8C8SPYMwLQsSE5VvI0xlXTj4ShvOfc0btLXSGAJRcpnopWOtAiSh6nGJ5uor68oHnbqrXc1bg1qMKT8XDbXsqfZjhRmgzziTPHzxXl03FEJljo
+        
+    getlistnote:
+      title: getlistnote
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - createdAt
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      example:
+        id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+        userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+        title: Today is Monday
+        content: I am very tired
+        createdAt: 2023-05-14T15:58:29.844Z
+        updatedAt: 2023-05-14T15:58:29.844Z
+    getnotebyID:
+      title: getnotebyID
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - createdAt
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      example:
+        id: 8a3fc2ba-1c7f-48aa-9a5f-c617d7af1d9b
+        userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+        title: Today is Monday
+        content: I am very tired
+        createdAt: 2023-05-14T15:58:29.844Z
+        updatedAt: 2023-05-14T15:58:29.844Z
+    createnoterequest:
+      title: createnoterequest
+      required:
+        - title
+        - content
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+      example:
+        title: Today is Monday
+        content: I am very happy
+    createnote:
+      title: createnote
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - createdAt
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      example:
+        id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+        userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+        title: Today is Monday
+        content: I am very happy
+        createdAt: 2023-05-15T10:46:42.529Z
+        updatedAt: 2023-05-15T10:46:42.529Z
+    updatenoterequest:
+      title: updatenoterequest
+      required:
+        - title
+        - content
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+      example:
+        title: Today is Tues
+        content: I am hungry
+    updatenote:
+      title: updatenote
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - createdAt
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      example:
+        id: 50793d0b-8897-45e8-b94c-332ea0b2eab3
+        userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+        title: Today is Tues
+        content: I am hungry
+        createdAt: 2023-05-15T10:46:42.529Z
+        updatedAt: 2023-05-15T10:47:51.661Z
+    deletenote:
+      title: deletenote
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - createdAt
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      example:
+        id: 27d66e2d-89d7-4680-a768-a128e22df3af
+        userId: f8c98ebd-0574-42f1-9ca4-f3203475c81b
+        title: Today is Friday
+        content: I am very tired
+        createdAt: 2023-05-14T15:58:00.655Z
+        updatedAt: 2023-05-14T16:04:01.361Z
 tags:
   - name: User
     description: 'User'
+  - name: Note
+    description: 'Note'
 
