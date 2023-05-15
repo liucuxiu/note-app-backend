@@ -16,7 +16,7 @@ export class DeleteNoteController extends BaseController {
     const { id } = req.params;
 
     try {
-      const deleteNoteDTO: DeleteNoteDTO = { userId, noteId: id }
+      const deleteNoteDTO: DeleteNoteDTO = { userId, noteId: id };
       const result = await this.useCase.execute(deleteNoteDTO);
       return this.ok(res, result);
     }

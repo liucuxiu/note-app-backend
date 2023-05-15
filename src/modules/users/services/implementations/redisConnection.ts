@@ -2,7 +2,7 @@ import * as redis from 'redis';
 import config from 'config';
 
 const redisConnectionString: string = config.get('auth.redisConnectionString');
-console.log(redisConnectionString)
+console.log(redisConnectionString);
 const redisConnection = redis.createClient({
   url: redisConnectionString
 });

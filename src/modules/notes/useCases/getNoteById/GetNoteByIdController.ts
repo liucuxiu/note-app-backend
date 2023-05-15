@@ -15,7 +15,7 @@ export class GetNoteByIdController extends BaseController {
     const { id } = req.params;
 
     try {
-      const noteDTO: GetNoteByIdDTO = { userId, noteId: id }
+      const noteDTO: GetNoteByIdDTO = { userId, noteId: id };
       const note = await this.useCase.execute(noteDTO);
       return this.ok(res, note);
     }

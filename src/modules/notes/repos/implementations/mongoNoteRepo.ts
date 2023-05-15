@@ -15,11 +15,11 @@ export class MongoNoteRepo implements INoteRepo {
     return note ? NoteMapper.toDomain(note) : null;
   }
 
-  async findNotesByUserId(userId: string, skip: number = 0, limit: number = 0): Promise<any> {
+  async findNotesByUserId(userId: string, skip = 0, limit = 0): Promise<any> {
     const listNotes = await NoteModel.find({ userId, isDeleted: false })
       .skip(skip)
       .limit(limit)
-      .sort([['createdAt', -1]]);
+      .sort([ [ 'createdAt', -1 ] ]);
     return listNotes.map(note => NoteMapper.toDomain(note));
   }
 

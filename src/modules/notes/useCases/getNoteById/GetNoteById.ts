@@ -14,8 +14,8 @@ export class GetNoteById implements UseCase<any, any> {
     const { userId, noteId } = noteDTO;
     const note = await this.noteRepo.findNoteById(userId, noteId);
     if (!note) {
-      throw new Error('Note not found')
+      throw new Error('Note not found');
     }
-    return NoteMapper.toDTO(note)
+    return NoteMapper.toDTO(note);
   }
 }

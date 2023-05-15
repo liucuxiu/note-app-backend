@@ -13,7 +13,7 @@ export class DeleteNoteUseCase implements UseCase<any, any> {
 
   async execute(deleteNoteDTO: DeleteNoteDTO): Promise<any> {
     const { userId, noteId } = deleteNoteDTO;
-    const note = await this.noteRepo.delete(userId, noteId)
+    const note = await this.noteRepo.delete(userId, noteId);
 
     if (!note) throw new NoteNotFoundError();
 
