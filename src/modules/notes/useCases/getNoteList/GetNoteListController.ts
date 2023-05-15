@@ -11,12 +11,13 @@ export class GetNoteListController extends BaseController {
 
   async executeImpl(req: any, res: any): Promise<any> {
     const { userId } = req.decoded;
+    const { page, limit } = req.query;
+    const skip = (page - 1) * limit;
+
     try {
-      //Generate a function get list and pagination
-
-
-
-      const listNote = await this.useCase.execute(userId);
+      const listNote = await this.useCase.execute({
+        userId, skip, limit
+      });
       return this.ok(res, listNote);
     }
     catch (err) {

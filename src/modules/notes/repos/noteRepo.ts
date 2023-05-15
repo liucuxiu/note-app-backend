@@ -4,7 +4,7 @@ import { EditNoteDTO } from '../useCases/editNote/EditNoteDTO';
 export interface INoteRepo {
   findNoteById(userId: string, noteId: string): Promise<any>;
 
-  findNotesByUserId(userId: string): Promise<any>;
+  findNotesByUserId(userId: string, skip: number | undefined, limit: number | undefined): Promise<any>;
 
   save(note: Note): Promise<Note>;
 

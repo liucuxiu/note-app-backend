@@ -18,6 +18,7 @@ export class NoteMapper {
       userId: raw.userId,
       title: raw.title,
       content: raw.content,
+      shortContent: raw.shortContent,
       createdAt: raw.createdAt,
       updatedAt: raw.updatedAt
     }, raw._id);

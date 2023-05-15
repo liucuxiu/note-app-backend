@@ -20,6 +20,10 @@ const noteSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   }
-},  { timestamps: true })
+}, { timestamps: true });
+
+noteSchema.virtual('shortContent').get(function () {
+  return this.content ? this.content.substring(0, 25) : undefined;
+});
 
 export const NoteModel = mongoose.model('Note', noteSchema);

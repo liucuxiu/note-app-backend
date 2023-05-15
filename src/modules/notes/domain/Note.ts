@@ -4,6 +4,7 @@ interface INoteProperties {
   userId: string;
   title: string;
   content: string;
+  shortContent?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -49,6 +50,10 @@ export class Note {
 
   get updatedAt(): Date | undefined {
     return this.props.updatedAt;
+  }
+
+  get shortContent(): string | undefined {
+    return this.props.shortContent;
   }
 
   public serialize(): INoteSerialize {
